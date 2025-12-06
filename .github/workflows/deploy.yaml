@@ -5,26 +5,38 @@ on:
     branches:
       - main
 
+# Quyền cho GITHUB_TOKEN
 permissions:
   contents: read
   pages: write
   id-token: write
 
+# Tránh deploy chồng job
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
 jobs:
   deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Configure GitHub Pages
-        uses: actions/configure-pages@v4
+      - name: Setup GitHub Pages
+        uses: actions/configure-pages@v5
 
       - name: Upload artifact for Pages
-        uses: actions/upload-pages-artifact@v1
+        uses: actions/upload-pages-artifact@v3
         with:
-          # đường dẫn đến thư mục chứa site tĩnh; '.' = root repo
+          # '.' = root repo, nơi có file index.html của bạn
           path: '.'
 
       - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v1
+        id: deployment
+        uses: actions/deploy-pages@v4
