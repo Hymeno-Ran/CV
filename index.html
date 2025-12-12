@@ -71,20 +71,19 @@
       align-items: center;
     }
 
-      .avatar {
+    .avatar {
       width: 72px;
       height: 72px;
       border-radius: 50%;
       overflow: hidden;
       box-shadow: 0 0 0 3px rgba(15, 23, 42, 1), 0 0 40px rgba(56, 189, 248, 0.4);
     }
-    
+
     .avatar img {
       width: 100%;
       height: 100%;
-      object-fit: cover; /* đảm bảo ảnh luôn khớp hình tròn */
+      object-fit: cover;
     }
-
 
     .name-role {
       display: flex;
@@ -128,7 +127,7 @@
     }
 
     .tagline {
-      margin-bottom: 20px;
+      margin-bottom: 12px;
       padding: 12px 14px;
       border-radius: 999px;
       background: radial-gradient(circle at left, var(--primary-soft), transparent 70%);
@@ -145,6 +144,38 @@
       border-radius: 999px;
       padding: 4px 10px;
       border: 1px solid rgba(148, 163, 184, 0.4);
+    }
+
+    /* Nút download CV */
+    .download-actions {
+      margin-bottom: 20px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6px 16px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.15s ease-out;
+      white-space: nowrap;
+    }
+
+    .btn-download {
+      background: #22c55e;
+      color: #0f172a;
+      box-shadow: 0 10px 25px rgba(34, 197, 94, 0.3);
+    }
+
+    .btn-download:hover {
+      background: #16a34a;
+      box-shadow: 0 14px 32px rgba(22, 163, 74, 0.4);
+      transform: translateY(-1px);
     }
 
     main {
@@ -341,7 +372,7 @@
     <header>
       <div class="profile-main">
         <div class="avatar">
-          <img src="./avatar.jpg" >
+          <img src="./avatar.jpg">
         </div>
         <div class="name-role">
           <div class="name">Chinh Thai Huu (Jason)</div>
@@ -358,6 +389,17 @@
     <div class="tagline">
       <span>CI/CD · AWS · Containerization · Agile/Scrum</span>
       <span>Dynamic & solution-oriented DevOps engineer</span>
+    </div>
+
+    <!-- Nút Download CV từ Google Drive -->
+    <div class="download-actions">
+      <a
+        class="btn btn-download"
+        href="https://drive.google.com/uc?export=download&id=YOUR_FILE_ID"
+        target="_blank"
+      >
+        ⬇ Download CV (PDF)
+      </a>
     </div>
 
     <main>
